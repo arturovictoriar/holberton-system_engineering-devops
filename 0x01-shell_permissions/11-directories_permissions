@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod ugo+x $(find /path/to/base/dir -type d)
+chmod ugo+x $(find . -type d)
