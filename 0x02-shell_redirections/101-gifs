@@ -1,0 +1,2 @@
+#!/bin/bash
+find . -type f -name "*.git" -printf "%f\n" | LC_ALL=C sort 
