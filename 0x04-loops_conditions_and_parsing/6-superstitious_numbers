@@ -8,7 +8,7 @@ do
         4)
 	echo "bad luck from China"
         ;;
-        8)
+        9)
 	echo "bad luck from Japan"
         ;;
         17)
