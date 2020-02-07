@@ -3,11 +3,10 @@
 i=10
 while [ "$i" -gt 0 ]
 do
+    echo "Holberton School"
     if [ "$i" -eq 2 ]
     then
         echo "Hi"
-    else
-        echo "Holberton School"
     fi
     i=$((i - 1))
 done
