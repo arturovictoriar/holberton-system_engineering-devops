@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # This script is displaying "Holberton School" 10 times
-file_h="/holbertonschool"
+file_h="holbertonschool"
+
 if [ -e "$file_h" ]
 then
+
     echo "holbertonschool file exists"
     if [ -s "$file_h" ]
     then
