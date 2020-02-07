@@ -4,12 +4,13 @@ file_h="/holbertonschool"
 if [ -e "$file_h" ]
 then
     echo "holbertonschool file exists"
-    if [ ! -s "$file_h" ]
+    if [ -s "$file_h" ]
     then
-        echo "holbertonschool file is empty"
-    else
         echo "holbertonschool file is not empty"
+    else
+        echo "holbertonschool file is empty"
     fi
+
     if [ -f "$file_h" ]
     then
         echo "holbertonschool is a regular file"
