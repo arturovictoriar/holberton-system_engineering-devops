@@ -4,7 +4,7 @@ file_h="/holbertonschool"
 if [ -e "$file_h" ]
 then
     echo "holbertonschool file exists"
-    if [ -s "$file_h" ]
+    if [ ! -s "$file_h" ]
     then
         echo "holbertonschool file is empty"
     else
