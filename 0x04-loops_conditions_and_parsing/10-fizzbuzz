@@ -3,13 +3,13 @@
 i=1
 while [ "$i" -le 100 ]
 do
-    if [ $(($i % 15)) -eq 0 ]
+    if [ $((i % 15)) -eq 0 ]
     then
         echo "FizzBuzz"
-    elif [ $(($i % 5)) -eq 0 ]
+    elif [ $((i % 5)) -eq 0 ]
     then
         echo "Buzz"
-    elif [ $(($i % 3)) -eq 0 ]
+    elif [ $((i % 3)) -eq 0 ]
     then
         echo "Fizz"
     else
