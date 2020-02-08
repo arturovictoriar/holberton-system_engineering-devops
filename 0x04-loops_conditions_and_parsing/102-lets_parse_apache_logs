@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script is displaying "Holberton School" 10 times
+file_h="apache-access.log"
+awk -F' ' '{ print $1, $9}' $file_h
