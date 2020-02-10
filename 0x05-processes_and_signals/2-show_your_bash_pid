@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script is displaying "Holberton School" 10 times
+# shellcheck disable=SC2009
+ps -aux | grep "bash"
