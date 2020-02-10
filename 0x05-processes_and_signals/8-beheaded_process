@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script is displaying "Holberton School" 10 times
+pkill -9 -f "bash ./7-highlander"
