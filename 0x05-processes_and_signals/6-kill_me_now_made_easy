@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script is displaying "Holberton School" 10 times
+pkill -f "bash ./4-to_infinity_and_beyond"
