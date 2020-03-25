@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Fix the bug in apache 2
+sed -i '/Listen 80/a Listen 0.0.0.0:8080' /etc/apache2/ports.conf
+sed -i '/VirtualHost>/a <VirtualHost *:8080>\nServerAdmin webmaster@localhost\nDocumentRoot /var/www/html\n</VirtualHost>' /etc/apache2/sites-available/000-default.conf
+service apache2 restart
