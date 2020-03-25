@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Push from client a file
-apt-get update
 apt-get -y install nginx
 ufw allow 'Nginx HTTP'
+chmod '0777' /var/www/html/index.nginx-debian.html
 echo "Holberton School" > /var/www/html/index.nginx-debian.html
