@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# Push from client a file
-apt-get update
-apt-get -y install nginx
-ufw allow 'Nginx HTTP'
-echo "Holberton School" > /var/www/html/index.nginx-debian.html
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/error_404.html
-sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
-sed -i '/listen 80 default_server/a error_page 404 /error_404.html; location = /error_404.html {root /usr/share/nginx/html;\n internal;}' /etc/nginx/sites-available/default
-service nginx start
+# Create a custom 404 page that contains a string
+sudo apt-get update
+sudo apt-get install -y nginx
+echo "Holberton School my people" | sudo tee /var/www/html/index.nginx-debian.html
+sudo sed -i "/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;\n" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/error_404.html
+sudo sed -i '/listen 80 default_server/a error_page 404 /error_404.html; location = /error_404.html {root /usr/share/nginx/html;\n internal;}' /etc/nginx/sites-available/default
+sudo service nginx restart
