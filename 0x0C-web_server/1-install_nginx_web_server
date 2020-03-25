@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Push from client a file
+sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
-echo "Holberton School" > /var/www/html/index.nginx-debian.html
+sudo chmod '0777' /var/www/html/index.nginx-debian.html
+echo "Holberton School for the win!" > /var/www/html/index.nginx-debian.html
 sudo /etc/init.d/nginx start
