@@ -6,33 +6,21 @@ exec { 'update':
 }
 
 package { 'nginx':
-  ensure  => installed,
-  require => Exec['update'],
+  ensure   => installed,
+  name     => 'nginx',
+  provider => apt,
+  require  => Exec['apt-get-update'],
 }
 
-file_line { 'error':
+file_line { 'Customheader':
   ensure  => present,
-  path    => '/etc/nginx/sites-available/default',
-  after   => 'server_name _;',
-  line    => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
-  require => Package['nginx'],
-}
-
-file_line { 'headercustom':
-  ensure  => present,
-  path    => '/etc/nginx/sites-available/default',
+  path    => '/etc/nginx/sites-enabled/default',
   after   => ':80 default_server;',
-  line    => "add_header X-Served-By ${hostname};",
-  require => Package['nginx'],
+  line    => "add_header X-Served-By \$hostname;",
+  require => Package['Install nginx'],
 }
 
-file { '/var/www/html/index.html':
-  content => 'Holberton School',
-  path    => '/var/www/html/index.html',
-  require => Package['nginx'],
-}
-
-service { 'nginx':
-  ensure  => running,
-  require => Package['nginx'],
+service { 'startnginx':
+  ensure  => true,
+  require => File_line['Add header'],
 }
