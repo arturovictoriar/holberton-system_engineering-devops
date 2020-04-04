@@ -1,17 +1,13 @@
 # Install and config the nginx
+
 exec { 'update':
-  command => '/usr/bin/apt-get -y update',
+  command  => 'sudo apt-get update',
+  provider => shell,
 }
 
 package { 'nginx':
   ensure  => installed,
   require => Exec['update'],
-}
-
-file { '/var/www/html/index.html':
-  content => 'Holberton School',
-  path    => '/var/www/html/index.html',
-  require => Package['nginx'],
 }
 
 file_line { 'error':
@@ -27,6 +23,12 @@ file_line { 'headercustom':
   path    => '/etc/nginx/sites-available/default',
   after   => ':80 default_server;',
   line    => "add_header X-Served-By ${hostname};",
+  require => Package['nginx'],
+}
+
+file { '/var/www/html/index.html':
+  content => 'Holberton School',
+  path    => '/var/www/html/index.html',
   require => Package['nginx'],
 }
 
