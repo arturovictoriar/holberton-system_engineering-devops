@@ -1,7 +1,11 @@
 # Install and config the nginx
+exec { 'update':
+  command => '/usr/bin/apt-get -y update',
+}
+
 package { 'nginx':
-  ensure => installed,
-  name   => 'nginx',
+  ensure  => installed,
+  require => Exec['update'],
 }
 
 file { '/var/www/html/index.html':
