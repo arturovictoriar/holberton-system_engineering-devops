@@ -1,0 +1,17 @@
+#!/bin/bash
+ 
+# Display information about subdomains.
+
+subdomaininfo () {
+    dig "$1" | grep -A1 'ANSWER SECTION:' | tail -n 1 | sed -r "s/$1./$2/g" | sed -r "s/ /\t/g" | awk -F'\t' '{ print "The subdomain " $1 " is a " $4 " record and points to "  $5 }'
+}
+
+if [ "$#" -eq 2 ]
+then
+    subdomaininfo "$2.$1" "$2"
+else
+    subdomaininfo "www.$1" "www"
+    subdomaininfo "lb-01.$1" "lb-01"
+    subdomaininfo "web-01.$1" "web-01"
+    subdomaininfo "web-02.$1" "web-02"
+fi
