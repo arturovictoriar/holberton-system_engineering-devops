@@ -3,7 +3,7 @@
 # Display information about subdomains.
 
 subdomaininfo () {
-    dig "$1" | grep -A1 'ANSWER SECTION:' | tail -n 1 | sed -r "s/$1./$2/g" | sed -r "s/ /\t/g" | awk -F'\t' '{ print "The subdomain " $1 " is a " $4 " record and points to "  $5 }'
+    dig "$1" | grep -A1 'ANSWER SECTION:' | tail -n 1 | sed -r "s/$1./$2/g" | sed -r "s/ /\t/g" | sed -r "s/\t/ /g" | awk '{ print "The subdomain " $1 " is a " $4 " record and points to "  $5 }'
 }
 
 if [ "$#" -eq 2 ]
