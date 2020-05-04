@@ -17,13 +17,12 @@ if __name__ == "__main__":
     list_report = []
     for task in total_num_task:
         report = {}
-        report["USER_ID"] = str(task["userId"])
+        report["USER_ID"] = str(task.get("userId"))
         report["USERNAME"] = str(username)
-        report["TASK_COMPLETED_STATUS"] = str(task["completed"])
-        report["TASK_TITLE"] = str(task["title"])
+        report["TASK_COMPLETED_STATUS"] = str(task.get("completed"))
+        report["TASK_TITLE"] = str(task.get("title"))
         list_report.append(report)
     header = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
     with open("USER_ID.csv", "w") as fcsv:
         f_csv = csv.DictWriter(fcsv, fieldnames=header, quoting=csv.QUOTE_ALL)
-        """f_csv.writeheader()"""
         f_csv.writerows(list_report)

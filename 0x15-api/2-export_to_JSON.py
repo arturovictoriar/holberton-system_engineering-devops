@@ -18,8 +18,8 @@ if __name__ == "__main__":
     for task in total_num_task:
         id_report = {}
         id_report["username"] = str(username)
-        id_report["completed"] = task["completed"]
-        id_report["task"] = str(task["title"])
+        id_report["completed"] = task.get("completed")
+        id_report["task"] = str(task.get("title"))
         list_dict_report.append(id_report)
     report = {}
     report[id_em] = list_dict_report
