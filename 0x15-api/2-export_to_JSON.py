@@ -23,5 +23,5 @@ if __name__ == "__main__":
         list_dict_report.append(id_report)
     report = {}
     report[id_em] = list_dict_report
-    with open("USER_ID.json", "w") as fjson:
+    with open("{}.json".format(id_em), "w") as fjson:
         fjson.write(json.dumps(report))

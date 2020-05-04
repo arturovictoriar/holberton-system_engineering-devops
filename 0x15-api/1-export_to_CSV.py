@@ -23,6 +23,6 @@ if __name__ == "__main__":
         report["TASK_TITLE"] = str(task.get("title"))
         list_report.append(report)
     header = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
-    with open("USER_ID.csv", "w") as fcsv:
+    with open("{}.csv".format(id_em), "w") as fcsv:
         f_csv = csv.DictWriter(fcsv, fieldnames=header, quoting=csv.QUOTE_ALL)
         f_csv.writerows(list_report)
