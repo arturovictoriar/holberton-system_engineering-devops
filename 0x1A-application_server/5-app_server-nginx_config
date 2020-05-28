@@ -16,12 +16,17 @@
 server {
         listen 80 default_server;
         add_header X-Served-By 1231-web-01;
+        server_name 34.74.70.205;
+        root /var/www/html;
+
+        # Add index.php to the list if you are using PHP
+        index index.html index.htm index.nginx-debian.html;
         location / {
                 proxy_pass http://127.0.0.1:5003/2-hbnb;
         }
 
         location /static {
-                proxy_pass http://127.0.0.1:5003/static;
+                proxy_pass http://127.0.0.1:5003;
         }
         error_page 404 /custom_404.html;
         location = /custom_404.html {
@@ -59,13 +64,6 @@ server {
         # Don't use them in a production server!
         #
         # include snippets/snakeoil.conf;
-
-        root /var/www/html;
-
-        # Add index.php to the list if you are using PHP
-        index index.html index.htm index.nginx-debian.html;
-
-        server_name _;
 
         # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
         #
