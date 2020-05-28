@@ -16,6 +16,13 @@
 server {
         listen 80 default_server;
         add_header X-Served-By 1231-web-01;
+        location / {
+                proxy_pass http://127.0.0.1:5003/2-hbnb;
+        }
+
+        location /static {
+                proxy_pass http://127.0.0.1:5003/static;
+        }
         error_page 404 /custom_404.html;
         location = /custom_404.html {
                 root /usr/share/nginx/html;
@@ -35,13 +42,6 @@ server {
         }
         location ~ /api/(.*)$ {
                 proxy_pass http://127.0.0.1:5002;
-        }
-        location / {
-                proxy_pass http://127.0.0.1:5003/2-hbnb;
-        }
-
-        location /static {
-                proxy_pass http://127.0.0.1:5003/static;
         }
 
         # SSL configuration
