@@ -7,5 +7,5 @@ exec { 'ulimit':
 exec { 'restorenginx':
   command  => 'service nginx restart',
   provider => shell,
-  require => Exec['ulimit'],
+  require  => Exec['ulimit'],
 }
